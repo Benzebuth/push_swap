@@ -1,7 +1,7 @@
 NAME	= push_swap
 
 CC		= gcc $(CFLAGS)
-CFLAGS 	= -Wall -Wextra -Werror -I $(INC_DIR)
+CFLAGS 	= -Wall -Wextra -Werror -I$(INC_DIR)
 
 RM 		= rm -f
 
@@ -16,12 +16,8 @@ LIBFT_LIB	= libft/libft.a
 
 all 	: $(NAME)
 
-$(NAME) : push libft
-		$(CC) $(OBJ)
-
-
-push	:
-	$(CC) $(LIBFT_LIB) $(addprefix srcs/, $(SRC)) -o $(addprefix srcs/, $(SRC:.c=.o))
+$(NAME) : libft $(OBJ)
+		$(CC) $(LIBFT_LIB) $(OBJ) -o $@
 
 libft	: 
 		make -C $(LIBFT_DIR) all

@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/14 16:33:24 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/14 19:19:24 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -15,7 +15,7 @@ int main(int ac, char **av)
 {
     if (ac == 2)
     {
-        ft_strlen(av[1]);
+        printf("%zu\n", ft_strlen(av[1]));
     }
     return (0);
 }
