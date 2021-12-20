@@ -1,33 +1,13 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.h                                        :+:      :+:    :+:   */
+/*   ps_list.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/17 18:57:34 by bcolin           ###   ########.ch       */
+/*   Created: 2021/12/20 15:12:52 by bcolin            #+#    #+#             */
+/*   Updated: 2021/12/20 15:13:42 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PUSH_SWAP_H
-# define PUSH_SWAP_H
-
-#include "../libft/includes/libft.h"
-#include <stdio.h>
-
-typedef struct s_stack
-{
-    int             data; 
-    struct s_list   *next;
-    struct s_list   *back;
-}   t_stack;
-
-typedef struct s_list_data
-{
-    struct s_list   *first;
-    struct s_list   *last;
-    int             size;
-}   t_list_data;
-
-#endif
+#include "push_swap.h"
