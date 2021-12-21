@@ -1,5 +1,6 @@
 # Perso
 push_swap
+*.vim
 
 # Prerequisites
 *.d

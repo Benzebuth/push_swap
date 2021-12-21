@@ -1,7 +1,7 @@
 NAME	= push_swap
 
 CC		= gcc $(CFLAGS)
-CFLAGS 	= -Wall -Wextra -Werror -I$(INC_DIR)
+CFLAGS 	= -Wall -Wextra -Werror -I$(INC_DIR) -g
 
 RM 		= rm -f
 
