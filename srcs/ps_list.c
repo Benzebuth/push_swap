@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:12:52 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/22 15:30:18 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/22 18:28:23 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,34 @@ void	ft_addcell_end(t_stack **list, t_stack *new_cell)
 	if (*list)
 	{
 		tmp = ft_lastcell(*list);
-		list->back = new_cell;
 		tmp->next = new_cell;
+		tmp = *list;
+		tmp->back = new_cell;
 	}
 	else
 		*list = new_cell;
 }
 
-void	t_addcell_front(t_stack **list, t_stack *new_cell)
+void	ft_addcell_front(t_stack **list, t_stack *new_cell)
 {
 	if (!list || !new_cell)
 		return ;
 	new_cell->next = *list;
 	*list = new_cell;
+}
+
+void	ft_showlist(t_stack *list)
+{
+	while (list->next)
+	{
+		ft_putstr_fd(ft_itoa(list->data), 1);
+		printf(" <- data | back :%p\n", list->back);// a delete
+		printf("next :%p\n", list->next);// a delete
+		ft_putstr_fd("\n", 1);
+		list = list->next;
+	}	
+	ft_putstr_fd(ft_itoa(list->data), 1);
+	printf(" <- data | back :%p\n", list->back);// a delete
+	printf("next :%p\n", list->next);// a delete
+	ft_putstr_fd("\n", 1);
 }

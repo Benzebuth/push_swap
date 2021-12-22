@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/22 15:28:31 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/22 18:12:31 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -47,7 +47,7 @@ static int	ft_parsing(int ac, char **av, t_stack **list_a)
 	}
 	else if (ac > 2)
 	{
-		// fonction extract para no-string
+		// fonction extract multi string
 		return (0);
 	}
 	return (1);
@@ -68,6 +68,8 @@ int	main(int ac, char **av)
 			ft_putstr_fd("error", 1);
 			return (1);
 		}
+		ft_showlist(list_a);
+		//ft_start_resolve(&list_a);
 	}
 	return (0);
 }

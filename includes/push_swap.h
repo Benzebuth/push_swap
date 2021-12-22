@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/22 15:22:45 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/22 18:12:53 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,5 +41,6 @@ t_stack	*ft_new_cell(int nb);
 void	ft_addcell_end(t_stack **list, t_stack *new_cell);
 void	ft_addcell_front(t_stack **list, t_stack *new_cell);
 int		ft_check_onlynumber(char *str);
+void	ft_showlist(t_stack *list);
 
 #endif
