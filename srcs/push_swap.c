@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/21 23:29:44 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/22 15:05:13 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -17,7 +17,11 @@ int ft_extract_nb(char *str, t_stack **list_a)
     int i;
     int j;
 
+    if (ft_check_onlynumber(str))
+        return (1);
     tab = ft_split(str, ' ');
+    if (!tab[0])
+        return (1);
     i = 0;
     j = 0;
     while (tab[i])

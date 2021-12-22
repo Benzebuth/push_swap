@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:12:52 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/21 22:59:56 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/22 15:07:15 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ void    ft_addcell_end(t_stack **list, t_stack *new_cell)
     if (*list)
     {
         tmp = ft_lastcell(*list);
+        list->back = new_cell;
         tmp->next = new_cell;
     }
     else
