@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/22 15:04:10 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/22 15:22:45 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,30 +15,31 @@
 
 //Includes
 
-#include "../libft/includes/libft.h"
-#include <stdio.h>
+# include "../libft/includes/libft.h"
+# include <stdio.h>
 
 //Struct
 
 typedef struct s_stack
 {
-    int             data; 
-    struct s_stack  *next;
-    struct s_stack  *back;
-}   t_stack;
+	int				data;
+	struct s_stack	*next;
+	struct s_stack	*back;
+}	t_stack;
 
 typedef struct s_list_data
 {
-    struct s_stack  *first;
-    struct s_stack  *last;
-    int             size;
-}   t_list_data;
+	struct s_stack	*first;
+	struct s_stack	*last;
+	int				size;
+}	t_list_data;
 
 //Prototype
 
-t_stack *ft_lastcell(t_stack *list);
-t_stack *ft_new_cell(int nb);
-void    ft_addcell_end(t_stack **list, t_stack *new_cell);
-void    ft_addcell_front(t_stack **list, t_stack *new_cell);
-int     ft_check_onlynumber(char *str);
+t_stack	*ft_lastcell(t_stack *list);
+t_stack	*ft_new_cell(int nb);
+void	ft_addcell_end(t_stack **list, t_stack *new_cell);
+void	ft_addcell_front(t_stack **list, t_stack *new_cell);
+int		ft_check_onlynumber(char *str);
+
 #endif
