@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/22 18:12:31 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/24 09:28:36 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "push_swap.h"
@@ -15,7 +15,6 @@ int	ft_extract_nb(char *str, t_stack **list_a)
 {
 	char	**tab;
 	int		i;
-	int		j;
 
 	if (ft_check_onlynumber(str))
 		return (1);
@@ -23,14 +22,32 @@ int	ft_extract_nb(char *str, t_stack **list_a)
 	if (!tab[0])
 		return (1);
 	i = 0;
-	j = 0;
 	while (tab[i])
 	{
 		ft_addcell_end(list_a, ft_new_cell(ft_atoi(tab[i])));
 		i++;
 	}
+	if (*tab)
+		free(*tab);
 	return (0);
 }
+
+int	ft_extract_nb_multi(char **str, t_stack **list_a, int ac)
+{
+	int		i;
+
+	i = 1;
+	while (i < ac)
+	{
+		if (ft_check_onlynumber(str[i]))
+			return (1);
+		else
+			ft_addcell_end(list_a, ft_new_cell(ft_atoi(str[i])));
+		i++;
+	}
+	return (0);
+}
+
 
 static int	ft_parsing(int ac, char **av, t_stack **list_a)
 {
@@ -47,8 +64,11 @@ static int	ft_parsing(int ac, char **av, t_stack **list_a)
 	}
 	else if (ac > 2)
 	{
-		// fonction extract multi string
-		return (0);
+		error_check = ft_extract_nb_multi(av, list_a, ac);
+		if (error_check)
+			return (1);
+		else
+			return (0);
 	}
 	return (1);
 }

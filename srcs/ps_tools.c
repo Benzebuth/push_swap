@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 14:58:01 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/22 15:25:22 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/24 09:40:05 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ int	ft_check_onlynumber(char *str)
 	i = 0;
 	while (str[i])
 	{
-		if (str[i] >= '0' && str[i] <= '9')
+		if (str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9')
+			i++;
+		else if (str[i] >= '0' && str[i] <= '9')
 			i++;
 		else if (str[i] == ' ' || str[i] == '\t')
 			i++;
