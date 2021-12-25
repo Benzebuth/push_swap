@@ -6,37 +6,65 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/25 18:33:21 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/25 19:17:21 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	ft_check_double(char **tab)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (tab[i])
+	{
+		j = 0;
+		while (j < i)
+		{
+			if (!(ft_strncmp(tab[i], tab[j], 10)))
+				return (1);
+			j++;
+		}
+		i++;
+	}
+	return (0);
+}
+
+int	ft_check_nb(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (!(str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9'))
+			return (1);
+		else if (!(str[i] >= '0' && str[i] <= '9'))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
 t_stack	*ft_parsing(int ac, char **av)
 {
-	t_stack	*a;
-	int	error_check;
+	t_stack a;
+	char **tab;
 
-	error_check = 0;
 	if (ac == 2)
 	{
-		error_check = ft_extract_nb(av[1], a);
-		if (error_check)
+
+		tab = ft_split(av[1], ' ');
+		if (!tab)
+			exit(1);
+		if(ft_check_double(tab) && ft_check_nb(av[1]))
 		{
-			ft_putstr_fd("error", 1);
+			ft_putstr_fd("error\n", 1);
 			exit(1);
 		}
 	}
-	else if (ac > 2)
-	{
-		error_check = ft_extract_nb_multi(av, &a, ac);
-		if (error_check)
-		{
-			ft_putstr_fd("error", 1);
-			exit(1);
-		}
-	}
-	return (a);
 }
 
 int	main(int ac, char **av)
@@ -46,6 +74,6 @@ int	main(int ac, char **av)
 
 	a = ft_parsing(ac, av);
 	//b = ft_init_stack();
-	ft_showlist(a);
+	//ft_showlist(a);
 	return (0);
 }
