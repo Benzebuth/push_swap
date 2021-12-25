@@ -7,11 +7,7 @@ RM 		= rm -f
 
 INC_DIR = includes/
 
-SRC 	= push_swap.c \
-		  ps_list.c \
-		  ps_tools.c \
-		  ps_extract.c \
-		  ps_stack_control.c
+SRC 	= push_swap.c 
 
 OBJ 	= $(addprefix srcs/, $(SRC:.c=.o))
 
