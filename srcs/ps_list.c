@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/20 15:12:52 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/24 09:33:52 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/25 16:56:58 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,18 +56,12 @@ void	ft_addcell_front(t_stack **list, t_stack *new_cell)
 	*list = new_cell;
 }
 
-void	ft_showlist(t_stack *list)
+void	ft_delete_cell(t_stack *cell)
 {
-	while (list->next)
+	cell->data = 0;
+	if (cell->back == NULL)
 	{
-		ft_putstr_fd(ft_itoa(list->data), 1);
-		printf(" <- data | back :%p\n", list->back);// a delete
-		printf("next :%p\n", list->next);// a delete
-		ft_putstr_fd("\n", 1);
-		list = list->next;
-	}	
-	ft_putstr_fd(ft_itoa(list->data), 1);
-	printf(" <- data | back :%p\n", list->back);// a delete
-	printf("next :%p\n", list->next);// a delete
-	ft_putstr_fd("\n", 1);
+		cell->next->back = NULL;
+		free(cell);
+	}
 }
