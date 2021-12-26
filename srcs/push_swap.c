@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/25 19:17:21 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/26 19:19:23 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,48 +32,71 @@ int	ft_check_double(char **tab)
 	return (0);
 }
 
-int	ft_check_nb(char *str)
+int	ft_check_nb(char **tab)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	while (str[i])
+	while (tab[i])
 	{
-		if (!(str[i] == '-' && str[i + 1] >= '0' && str[i + 1] <= '9'))
-			return (1);
-		else if (!(str[i] >= '0' && str[i] <= '9'))
-			return (1);
+		j = 0;
+		while (tab[i][j])
+		{
+			if (tab[i][j] == '-' && ft_isdigit(tab[i][j + 1]))
+				j++;
+			else if (!(ft_isdigit(tab[i][j])))
+				return (1);
+			else
+				j++;
+		}
 		i++;
 	}
 	return (0);
 }
 
+void	ft_extract(char **tab, t_node **list_a)
+{
+	int		i;
+	t_node	*new;
+
+	i = 0;
+	while (tab[i])
+	{
+		new = ft_new_node(ft_atoi(tab[i]));
+		ft_addnode_end(list_a, new);
+		i++;
+	}
+}
+
 t_stack	*ft_parsing(int ac, char **av)
 {
-	t_stack a;
-	char **tab;
+	t_stack *dest;
+	char	**tab;
 
+	dest = init_stack();
 	if (ac == 2)
 	{
 
 		tab = ft_split(av[1], ' ');
 		if (!tab)
 			exit(1);
-		if(ft_check_double(tab) && ft_check_nb(av[1]))
-		{
-			ft_putstr_fd("error\n", 1);
-			exit(1);
-		}
+		if(ft_check_nb(tab) || ft_check_double(tab))
+			error_send();
+		ft_extract(tab, &dest->first);
 	}
+	dest->last = ft_lastnode(dest->first);
+	return (dest);
 }
 
 int	main(int ac, char **av)
 {
 	t_stack	*a;
-	//t_stack	*b;
+	t_stack	*b;
 
 	a = ft_parsing(ac, av);
+	showstack(a);
+	b = init_stack();
 	//b = ft_init_stack();
-	//ft_showlist(a);
 	return (0);
 }
