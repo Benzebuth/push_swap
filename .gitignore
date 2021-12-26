@@ -22,9 +22,9 @@ push_swap
 
 # Libraries
 *.lib
-*.a
 *.la
 *.lo
+*.a
 
 # Shared objects (inc. Windows DLLs)
 *.dll
