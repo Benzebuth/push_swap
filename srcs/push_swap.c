@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/26 19:19:23 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/27 17:33:02 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,8 +95,9 @@ int	main(int ac, char **av)
 	t_stack	*b;
 
 	a = ft_parsing(ac, av);
-	showstack(a);
 	b = init_stack();
-	//b = ft_init_stack();
+	ss(a, b);
+	showstack(a);
+	showstack(b);
 	return (0);
 }

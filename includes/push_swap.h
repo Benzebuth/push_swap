@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/26 17:54:57 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/27 17:32:20 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,10 @@ void	ft_addnode_end(t_node **list, t_node *new_node);
 t_stack	*init_stack(void);
 void	showstack(t_stack *stack);
 void	error_send(void);
-// command stack manipulation
 
+// command stack manipulation
+void	sa(t_stack *a, int msg);
+void	sb(t_stack *b, int msg);
+void	ss(t_stack *a, t_stack *b);
 
 #endif
