@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/27 17:57:52 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/27 23:51:30 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	error_send(void);
 void	sa(t_stack *a, int msg);
 void	sb(t_stack *b, int msg);
 void	ss(t_stack *a, t_stack *b);
-void	pa(t_stack *a, t_stack *b);
+void	pa(t_stack *a, t_stack *b, int msg);
+void	pb(t_stack *a, t_stack *b, int msg);
 
 #endif

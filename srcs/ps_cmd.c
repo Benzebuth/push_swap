@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:13:00 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/27 21:01:38 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/27 23:52:30 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ss(t_stack *a, t_stack *b)
 	ft_putstr_fd("ss\n", 1);
 }
 
-void	pa(t_stack *a, t_stack *b)
+void	pa(t_stack *a, t_stack *b, int msg)
 {
 	if (!b->first)
 		return ;
@@ -60,7 +60,7 @@ void	pa(t_stack *a, t_stack *b)
 		a->first->next = NULL;
 		a->last = a->first;
 	}
-	else if (a->first->data)
+	else if (a->first && a->first->data && b->first->next)
 	{
 		a->first->back = b->first;
 		b->first = b->first->next;
@@ -68,5 +68,21 @@ void	pa(t_stack *a, t_stack *b)
 		a->first->back->next = a->first;
 		a->first = a->first->back;
 	}
-	ft_putstr_fd("pa\n", 1);
+	else if (b->last == b->first)
+	{
+		b->first->next = a->first;
+		a->first->back = b->first;
+		a->first = b->first;
+		b->first = NULL;
+		b->last = NULL;
+	}
+	if (msg)
+		ft_putstr_fd("pa\n", 1);
+}
+
+void	pb(t_stack *a, t_stack *b, int msg)
+{
+	pa(b, a, 0);
+	if (msg)
+		ft_putstr_fd("pb\n", 1);
 }

@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/27 21:04:11 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/27 23:53:51 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,14 @@ int	main(int ac, char **av)
 
 	a = ft_parsing(ac, av);
 	b = init_stack();
-	pa(b, a);
-	pa(b, a);
-	pa(b, a);
-	pa(b, a);
+	pa(a, b, 1);
+	pb(a, b, 1);
+	pb(a, b, 1);
+	pb(a, b, 1);
+	pb(a, b, 1);
+	pb(a, b, 1);
+	pa(a, b, 1);
+	pa(a, b, 1);
 	showstack(a, 2);
 	showstack(b, 3);
 	return (0);
