@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:13:00 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/27 17:32:04 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/27 21:01:38 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,27 @@ void	ss(t_stack *a, t_stack *b)
 		sb(b, 0);
 	}
 	ft_putstr_fd("ss\n", 1);
+}
+
+void	pa(t_stack *a, t_stack *b)
+{
+	if (!b->first)
+		return ;
+	if (!a->first)
+	{
+		a->first = b->first;
+		b->first = b->first->next;
+		b->first->back = NULL;
+		a->first->next = NULL;
+		a->last = a->first;
+	}
+	else if (a->first->data)
+	{
+		a->first->back = b->first;
+		b->first = b->first->next;
+		b->first->back = NULL;
+		a->first->back->next = a->first;
+		a->first = a->first->back;
+	}
+	ft_putstr_fd("pa\n", 1);
 }
