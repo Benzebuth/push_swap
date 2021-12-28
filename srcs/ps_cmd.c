@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:13:00 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 19:37:32 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 21:31:53 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,18 +48,21 @@ void	ss(t_stack *a, t_stack *b)
 	ft_putstr_fd("ss\n", 1);
 }
 
+static void	_pa(t_stack *a, t_stack *b)
+{
+	a->first = b->first;
+	b->first = b->first->next;
+	b->first->back = NULL;
+	a->first->next = NULL;
+	a->last = a->first;
+}
+
 void	pa(t_stack *a, t_stack *b, int msg)
 {
 	if (!b->first)
 		return ;
 	if (!a->first)
-	{
-		a->first = b->first;
-		b->first = b->first->next;
-		b->first->back = NULL;
-		a->first->next = NULL;
-		a->last = a->first;
-	}
+		_pa(a, b);
 	else if (a->first && a->first->data && b->first->next)
 	{
 		a->first->back = b->first;
@@ -134,7 +137,7 @@ void	rra(t_stack *a, int msg)
 		a->last = a->last->back;
 		a->first->back = NULL;
 		if (msg)
-			ft_putstr_fd("rra", 1);
+			ft_putstr_fd("rra\n", 1);
 	}
 }
 
@@ -144,7 +147,7 @@ void	rrb(t_stack *b, int msg)
 		return ;
 	rra(b, 0);
 	if (msg)
-		ft_putstr_fd("rrb", 1);
+		ft_putstr_fd("rrb\n", 1);
 }
 
 void	rrr(t_stack *a, t_stack *b)
@@ -152,6 +155,6 @@ void	rrr(t_stack *a, t_stack *b)
 	if (!a && !b)
 		return ;
 	rra(a, 0);
-	rrb(a, 0);
+	rrb(b, 0);
 	ft_putstr_fd("rrr\n", 1);
 }

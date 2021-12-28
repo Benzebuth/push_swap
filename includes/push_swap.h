@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 19:37:57 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 21:21:15 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,16 @@ typedef struct s_stack
 }	t_stack;
 
 //Prototype
+t_stack	*init_stack(void);
 t_node	*ft_lastnode(t_node *list);
 t_node	*ft_new_node(int nb);
 void	ft_addnode_end(t_node **list, t_node *new_node);
-t_stack	*init_stack(void);
 void	showstack(t_stack **stack_address, int color_option);
 void	showstack_multi(t_stack *a, t_stack *b);
 void	error_send(void);
+
+//Resolver
+void	resolver(t_stack *a, t_stack *b);
 
 // command stack manipulation
 void	sa(t_stack *a, int msg);

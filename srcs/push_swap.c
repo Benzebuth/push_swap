@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 19:35:26 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 21:34:34 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ void	error_send(void)
 	exit(1);
 }
 
-int	ft_check_double(char **tab)
+int	ft_check_double(char **tab, int opt)
 {
 	int	i;
 	int	j;
 
 	i = 0;
+	if (opt)
+		i = 1;
 	while (tab[i])
 	{
 		j = 0;
@@ -38,12 +40,14 @@ int	ft_check_double(char **tab)
 	return (0);
 }
 
-int	ft_check_nb(char **tab)
+int	ft_check_nb(char **tab, int opt)
 {
 	int	i;
 	int	j;
 
 	i = 0;
+	if (opt)
+		i = 1;
 	while (tab[i])
 	{
 		j = 0;
@@ -61,18 +65,27 @@ int	ft_check_nb(char **tab)
 	return (0);
 }
 
-void	ft_extract(char **tab, t_node **list_a)
+void	ft_extract(char **tab, t_node **list_a, int opt)
 {
 	int		i;
 	t_node	*new;
 
 	i = 0;
+	if (opt)
+		i = 1;
 	while (tab[i])
 	{
 		new = ft_new_node(ft_atoi(tab[i]));
 		ft_addnode_end(list_a, new);
 		i++;
 	}
+}
+
+void	ft_parsing_multi(char **av, t_node **first)
+{
+	if (ft_check_nb(av, 1) || ft_check_double(av, 1))
+		error_send();
+	ft_extract(av, first, 1);
 }
 
 t_stack	*ft_parsing(int ac, char **av)
@@ -86,9 +99,15 @@ t_stack	*ft_parsing(int ac, char **av)
 		tab = ft_split(av[1], ' ');
 		if (!tab)
 			exit(1);
-		if (ft_check_nb(tab) || ft_check_double(tab))
+		if (ft_check_nb(tab, 0) || ft_check_double(tab, 0))
 			error_send();
-		ft_extract(tab, &dest->first);
+		ft_extract(tab, &dest->first, 0);
+		if (tab)
+			free(tab);
+	}
+	if (ac > 2)
+	{
+		ft_parsing_multi(av, &dest->first);
 	}
 	dest->last = ft_lastnode(dest->first);
 	return (dest);
@@ -101,31 +120,9 @@ int	main(int ac, char **av)
 
 	a = ft_parsing(ac, av);
 	b = init_stack();
-	pa(a, b, 1);
-	pb(a, b, 1);
-	pb(a, b, 1);
-	pb(a, b, 1);
-	pb(a, b, 1);
-	pb(a, b, 1);
-	pa(a, b, 1);
-	pa(a, b, 1);
-	ra(a, 1);
-	ra(a, 1);
-	ra(a, 1);
-	rb(b, 1);
-	rr(a, b);
-	rr(a, b);
-	rr(a, b);
-	rr(a, b);
-	rra(a, 1);
-	rra(a, 1);
-	rra(a, 1);
-	rra(a, 1);
-	rrb(b, 1);
-	rrb(b, 1);
-	rrb(b, 1);
-	showstack(&a, 2);
-	showstack(&b, 3);
+	resolver(a, b);
+	//showstack(&a, 2);
+	//showstack(&b, 3);
 	showstack_multi(a, b);
 	return (0);
 }
