@@ -6,11 +6,17 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/27 23:53:51 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 01:46:04 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	error_send(void)
+{
+	ft_putstr_fd("error\n", 1);
+	exit(1);
+}
 
 int	ft_check_double(char **tab)
 {
@@ -71,17 +77,16 @@ void	ft_extract(char **tab, t_node **list_a)
 
 t_stack	*ft_parsing(int ac, char **av)
 {
-	t_stack *dest;
+	t_stack	*dest;
 	char	**tab;
 
 	dest = init_stack();
 	if (ac == 2)
 	{
-
 		tab = ft_split(av[1], ' ');
 		if (!tab)
 			exit(1);
-		if(ft_check_nb(tab) || ft_check_double(tab))
+		if (ft_check_nb(tab) || ft_check_double(tab))
 			error_send();
 		ft_extract(tab, &dest->first);
 	}
@@ -104,7 +109,16 @@ int	main(int ac, char **av)
 	pb(a, b, 1);
 	pa(a, b, 1);
 	pa(a, b, 1);
-	showstack(a, 2);
-	showstack(b, 3);
+	ra(a, 1);
+	ra(a, 1);
+	ra(a, 1);
+	rb(b, 1);
+	rr(a, b);
+	rr(a, b);
+	rr(a, b);
+	rr(a, b);
+	showstack(&a, 2);
+	showstack(&b, 3);
+	showstack_multi(a, b);
 	return (0);
 }

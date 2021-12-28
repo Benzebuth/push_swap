@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/25 19:40:59 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/26 18:48:32 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 01:01:45 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_node	*ft_lastnode(t_node *list)
 
 void	ft_addnode_end(t_node **list, t_node *new_node)
 {
-	t_node *tmp;
+	t_node	*tmp;
 
 	if (*list)
 	{
@@ -37,7 +37,7 @@ void	ft_addnode_end(t_node **list, t_node *new_node)
 
 t_node	*ft_new_node(int nb)
 {
-	t_node *new;
+	t_node	*new;
 
 	if (!nb)
 		return (NULL);
@@ -48,12 +48,11 @@ t_node	*ft_new_node(int nb)
 	new->next = NULL;
 	new->back = NULL;
 	return (new);
-
 }
 
 t_stack	*init_stack(void)
 {
-	t_stack *new;
+	t_stack	*new;
 
 	new = (t_stack *)malloc(sizeof(t_stack));
 	if (!new)

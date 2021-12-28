@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:13:00 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/27 23:52:30 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 01:44:54 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,4 +85,36 @@ void	pb(t_stack *a, t_stack *b, int msg)
 	pa(b, a, 0);
 	if (msg)
 		ft_putstr_fd("pb\n", 1);
+}
+
+void	ra(t_stack *a, int msg)
+{
+	if (a && a->first != a->last)
+	{
+		a->first->next->back = NULL;
+		a->first->back = a->last;
+		a->last->next = a->first;
+		a->first = a->first->next;
+		a->last = a->last->next;
+		a->last->next = NULL;
+		if (msg)
+		ft_putstr_fd("ra\n", 1);
+	}
+}
+
+void	rb(t_stack *b, int msg)
+{
+	if (b)
+		ra(b, 0);
+	if (msg)
+		ft_putstr_fd("rb\n", 1);
+}
+
+void	rr(t_stack *a, t_stack *b)
+{
+	if (!a && !b)
+		return ;
+	ra(a, 0);
+	rb(b, 0);
+	ft_putstr_fd("rr\n", 1);
 }
