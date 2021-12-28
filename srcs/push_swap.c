@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 01:46:04 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 19:35:26 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,13 @@ int	main(int ac, char **av)
 	rr(a, b);
 	rr(a, b);
 	rr(a, b);
+	rra(a, 1);
+	rra(a, 1);
+	rra(a, 1);
+	rra(a, 1);
+	rrb(b, 1);
+	rrb(b, 1);
+	rrb(b, 1);
 	showstack(&a, 2);
 	showstack(&b, 3);
 	showstack_multi(a, b);

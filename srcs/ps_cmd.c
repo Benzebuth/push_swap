@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 17:13:00 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 01:44:54 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 19:37:32 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,23 +98,60 @@ void	ra(t_stack *a, int msg)
 		a->last = a->last->next;
 		a->last->next = NULL;
 		if (msg)
-		ft_putstr_fd("ra\n", 1);
+			ft_putstr_fd("ra\n", 1);
 	}
 }
 
 void	rb(t_stack *b, int msg)
 {
-	if (b)
+	if (b && b->first != b->last)
+	{
 		ra(b, 0);
-	if (msg)
-		ft_putstr_fd("rb\n", 1);
+		if (msg)
+			ft_putstr_fd("rb\n", 1);
+	}
 }
 
 void	rr(t_stack *a, t_stack *b)
 {
-	if (!a && !b)
+	if (!a || !b)
 		return ;
 	ra(a, 0);
 	rb(b, 0);
 	ft_putstr_fd("rr\n", 1);
+}
+
+void	rra(t_stack *a, int msg)
+{
+	if (!a)
+		return ;
+	if (a->first != a->last)
+	{
+		a->first->back = a->last;
+		a->last->back->next = NULL;
+		a->last->next = a->first;
+		a->first = a->first->back;
+		a->last = a->last->back;
+		a->first->back = NULL;
+		if (msg)
+			ft_putstr_fd("rra", 1);
+	}
+}
+
+void	rrb(t_stack *b, int msg)
+{
+	if (!b)
+		return ;
+	rra(b, 0);
+	if (msg)
+		ft_putstr_fd("rrb", 1);
+}
+
+void	rrr(t_stack *a, t_stack *b)
+{
+	if (!a && !b)
+		return ;
+	rra(a, 0);
+	rrb(a, 0);
+	ft_putstr_fd("rrr\n", 1);
 }

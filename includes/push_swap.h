@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 01:45:42 by bcolin           ###   ########.ch       */
+/*   Updated: 2021/12/28 19:37:57 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,8 @@ void	pb(t_stack *a, t_stack *b, int msg);
 void	ra(t_stack *a, int msg);
 void	rb(t_stack *b, int msg);
 void	rr(t_stack *a, t_stack *b);
+void	rra(t_stack *a, int msg);
+void	rrb(t_stack *b, int msg);
+void	rrr(t_stack *a, t_stack *b);
 
 #endif
