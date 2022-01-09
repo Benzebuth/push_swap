@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:46:10 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 21:34:34 by bcolin           ###   ########.ch       */
+/*   Updated: 2022/01/03 17:06:54 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,8 @@ t_stack	*ft_parsing(int ac, char **av)
 	t_stack	*dest;
 	char	**tab;
 
+	if (ac == 1)
+		exit(1);
 	dest = init_stack();
 	if (ac == 2)
 	{
@@ -105,7 +107,7 @@ t_stack	*ft_parsing(int ac, char **av)
 		if (tab)
 			free(tab);
 	}
-	if (ac > 2)
+	else if (ac > 2)
 	{
 		ft_parsing_multi(av, &dest->first);
 	}

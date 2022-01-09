@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/14 15:51:58 by bcolin            #+#    #+#             */
-/*   Updated: 2021/12/28 21:21:15 by bcolin           ###   ########.ch       */
+/*   Updated: 2022/01/04 18:39:48 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,14 @@ typedef struct s_stack
 	struct s_node	*first;
 	struct s_node	*last;
 }	t_stack;
+
+typedef struct s_env
+{
+	int				size;
+	struct s_node	pivot;
+	struct s_node	*start;
+	struct s_node	*end;
+}	t_env;
 
 //Prototype
 t_stack	*init_stack(void);
