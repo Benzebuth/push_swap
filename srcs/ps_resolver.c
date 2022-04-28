@@ -6,7 +6,7 @@
 /*   By: bcolin <bcolin@student.42lausanne.ch>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 21:22:17 by bcolin            #+#    #+#             */
-/*   Updated: 2022/01/04 23:07:19 by bcolin           ###   ########.ch       */
+/*   Updated: 2022/04/29 01:21:51 by bcolin           ###   ########.ch       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ t_node	*init_pivot(int size, t_stack *a)
 	mid = size / 2;
 	while (index != mid)
 	{
-		a->first	
+		a->first;	
 		index++;
 	}
 	pivot = a->first;
